@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Search UI Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="search-container">
+        <h1 class="glow-text">Power Search</h1>
+        
+        <div class="search-bar-wrapper">
+            <input type="text" id="searchInput" placeholder="What do you want to learn today?">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="quick-chips">
+            <button class="chip" id="chipExact">🎯 Exact Phrase</button>
+            <button class="chip" id="chipPDF">📄 PDF Docs</button>
+            <button class="chip" id="chipReddit">👽 Reddit</button>
+            <button class="chip" id="chipYT">📺 YouTube</button>
+            <button class="chip" id="chip24h">🕒 Past 24h</button>
+        </div>
+
+        <div id="resultsContainer">
+            
+            <div class="result-item ai-box">
+                <div class="result-title ai-title">✨ AI Summary</div>
+                <div class="result-snippet">
+                    This is a placeholder for the AI's answer. When the backend is connected, the smart summary of your search will appear right here in this highlighted box, giving you the answer instantly before you even click a link.
+                </div>
+            </div>
+
+            <div class="result-item">
+                <a href="#" class="result-title">Understanding React Hooks - A Complete Guide</a>
+                <div class="result-url">https://react.dev/reference/react</div>
+                <div class="result-snippet">React hooks let you use state and other React features without writing a class. Learn how to use useState, useEffect, and custom hooks to build better apps.</div>
+            </div>
+
+            <div class="result-item">
+                <a href="#" class="result-title">PDF: Advanced CSS Glassmorphism Techniques</a>
+                <div class="result-url">https://css-tricks.com/downloads/glass-guide.pdf</div>
+                <div class="result-snippet">A comprehensive PDF guide on how to create beautiful, blurred background effects using backdrop-filter and modern CSS properties.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
