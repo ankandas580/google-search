@@ -1,40 +1,32 @@
 :root {
-    /* Light Mode Colors */
     --bg-color: #f1f5f9;
     --text-color: #1e293b;
     --glass-bg: rgba(255, 255, 255, 0.6);
     --border-color: rgba(0, 0, 0, 0.1);
     --accent: #38bdf8;
-    --chip-bg: rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Dark Mode Colors */
         --bg-color: #020617;
         --text-color: #f1f5f9;
         --glass-bg: rgba(30, 41, 59, 0.5);
         --border-color: rgba(255, 255, 255, 0.1);
         --accent: #818cf8;
-        --chip-bg: rgba(255, 255, 255, 0.05);
     }
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
     padding: 60px 20px;
-    transition: all 0.3s ease;
 }
 
-.search-container {
-    width: 100%;
-    max-width: 750px;
-}
+.search-container { width: 100%; max-width: 800px; }
 
 .glow-text {
     text-align: center;
@@ -45,11 +37,7 @@ body {
     margin-bottom: 40px;
 }
 
-.search-bar-wrapper {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-}
+.search-bar-wrapper { display: flex; gap: 10px; margin-bottom: 20px; }
 
 #searchInput {
     flex: 1;
@@ -60,14 +48,8 @@ body {
     color: var(--text-color);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    font-size: 17px;
+    font-size: 16px;
     outline: none;
-    transition: 0.3s;
-}
-
-#searchInput:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
 }
 
 #searchBtn {
@@ -78,37 +60,21 @@ body {
     color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-#searchBtn:hover {
-    transform: scale(1.05);
-}
-
-.quick-chips {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
+.quick-chips { display: flex; gap: 10px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
 
 .chip {
     padding: 10px 20px;
     border-radius: 20px;
     border: 1px solid var(--border-color);
-    background: var(--chip-bg);
+    background: var(--glass-bg);
     color: var(--text-color);
     cursor: pointer;
     backdrop-filter: blur(5px);
-    transition: 0.2s;
 }
 
-.chip.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-}
+.chip.active { background: var(--accent); color: white; border-color: var(--accent); }
 
 .result-item {
     background: var(--glass-bg);
@@ -117,14 +83,6 @@ body {
     padding: 25px;
     border-radius: 20px;
     margin-bottom: 20px;
-    line-height: 1.6;
 }
 
-.ai-header {
-    color: var(--accent);
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+.ai-title { color: var(--accent); font-weight: bold; margin-bottom: 10px; }
