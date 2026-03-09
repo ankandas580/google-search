@@ -1,77 +1,130 @@
-/* Color Palette Variables */
 :root {
-    /* Auto-switch to Light Mode colors */
-    --bg-color: #f8fafc;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --border-color: #e2e8f0;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
+    /* Light Mode Colors */
+    --bg-color: #f1f5f9;
+    --text-color: #1e293b;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(0, 0, 0, 0.1);
     --accent: #38bdf8;
+    --chip-bg: rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Auto-switch to Dark Mode colors */
-        --bg-color: #0f172a;
-        --glass-bg: rgba(30, 41, 59, 0.7);
-        --border-color: #334155;
-        --text-main: #f1f5f9;
-        --text-muted: #94a3b8;
+        /* Dark Mode Colors */
+        --bg-color: #020617;
+        --text-color: #f1f5f9;
+        --glass-bg: rgba(30, 41, 59, 0.5);
+        --border-color: rgba(255, 255, 255, 0.1);
         --accent: #818cf8;
+        --chip-bg: rgba(255, 255, 255, 0.05);
     }
 }
 
 body {
     background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: system-ui, -apple-system, sans-serif;
-    transition: background-color 0.3s ease;
+    color: var(--text-color);
+    font-family: 'Inter', system-ui, sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding: 60px 20px;
+    transition: all 0.3s ease;
 }
 
 .search-container {
     width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-/* Translucent Glass Effect */
-#searchInput {
-    flex-grow: 1;
-    padding: 16px 24px;
-    border-radius: 30px;
-    border: 1px solid var(--border-color);
-    background: var(--glass-bg);
-    color: var(--text-main);
-    backdrop-filter: blur(12px); /* This creates the glass look */
-    -webkit-backdrop-filter: blur(12px);
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.result-item {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    border-radius: 16px;
-    margin-bottom: 16px;
-}
-
-/* Accent for AI Box */
-.ai-box {
-    border: 2px solid var(--accent);
-    box-shadow: 0 8px 32px rgba(129, 140, 248, 0.1);
+    max-width: 750px;
 }
 
 .glow-text {
     text-align: center;
+    font-size: 3rem;
     background: linear-gradient(to right, #38bdf8, #818cf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 18px 25px;
+    border-radius: 35px;
+    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    color: var(--text-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    font-size: 17px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+#searchBtn {
+    padding: 18px 35px;
+    border-radius: 35px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#searchBtn:hover {
+    transform: scale(1.05);
+}
+
+.quick-chips {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.chip {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--chip-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: 0.2s;
+}
+
+.chip.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.result-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.ai-header {
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
