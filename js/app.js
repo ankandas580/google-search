@@ -1,26 +1,32 @@
-// This script just handles the visual clicking of the buttons so you can test the UI.
-// There is ZERO backend or API code in here right now.
+const API_KEY = "AIzaSyAD7c1VqovNhZYC1vwURhHY-ey61exMmm0";
 
-const chips = document.querySelectorAll('.chip');
-const searchBtn = document.getElementById('searchBtn');
-const searchInput = document.getElementById('searchInput');
+document.getElementById('searchBtn').addEventListener('click', async () => {
+    const query = document.getElementById('searchInput').value;
+    const results = document.getElementById('resultsContainer');
+    
+    results.innerHTML = "Thinking...";
 
-// Make the chips turn purple when clicked
-chips.forEach(chip => {
-    chip.addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
-});
+    try {
+        // We use v1beta for the latest search features
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: `Search for: ${query}` }] }],
+                tools: [{ googleSearch: {} }] 
+            })
+        });
 
-// A dummy search button click effect
-searchBtn.addEventListener('click', () => {
-    if(searchInput.value.trim() === "") {
-        alert("Type something in the search bar first!");
-    } else {
-        searchBtn.innerText = "Searching...";
-        setTimeout(() => {
-            searchBtn.innerText = "Search";
-            alert("UI looks good! Ready to connect the backend when you are.");
-        }, 800);
+        const data = await response.json();
+        console.log("API Response:", data); // Check your browser console for this!
+
+        if (data.candidates) {
+            results.innerHTML = `<div class="result-item">${data.candidates[0].content.parts[0].text}</div>`;
+        } else {
+            results.innerHTML = "Error: Check Console for details.";
+        }
+    } catch (e) {
+        results.innerHTML = "Connection failed.";
+        console.error(e);
     }
 });
